@@ -11,7 +11,7 @@ The goal of this pilot is to showcase a "Clearance System" dashboard comparable 
 - **Fiori Design Compliance**: Uses `@ui5/webcomponents-react` to ensure the look and feel remains consistent with SAP standards.
 - **Responsive Dashboard**: A fully responsive layout including a Shell Bar, Side Navigation, and Grid-based widgets.
 - **Data Visualization**: Integration of Charts using `@ui5/webcomponents-react-charts`.
-- **Custom Components**: Demonstration of custom custom React components (e.g., `SegmentedProgressBar`) working alongside standard UI5 components.
+- **Custom Components**: Demonstration of custom React components (e.g., `SegmentedProgressBar`) working alongside standard UI5 components.
 - **Interactive UI**: Examples of state management (e.g., collapsible navigation) and interactive lists.
 
 ## Technology Stack
