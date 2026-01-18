@@ -1,0 +1,110 @@
+<mvc:View controllerName="clearanceui.clearanceui.controller.EmployeeHomepage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:custom="clearanceui.clearanceui.controls"
+    xmlns:tnt="sap.tnt"
+    xmlns:card="sap.f.cards">
+    <Page id="employeeHomepage" class="employeePage" showHeader="true" enableScrolling="true">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button id="navToggleButton" icon="sap-icon://menu2" press=".onNavToggleButtonPress" class="hamburger-button" />
+                </contentLeft>
+                <contentMiddle>
+                    <Title text="{i18n>appTitle}" />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <!-- <content> -->
+        <HBox width="100%" height="100%">
+            <!-- Side Navigation Bar -->
+            <core:Fragment fragmentName="clearanceui.clearanceui.view.fragments.employeeSideNavBar" type="XML"/>
+            <!-- Main Content Area - Allow natural scrolling -->
+            <VBox class=" sapUiMediumMargin" width="100%" alignItems="Start" alignContent="SpaceBetween" justifyContent="Start">
+                <!-- Top Section -->
+                <HBox class="sapUiSmallMargin welcomeBox sapUiMediumMarginBeginEnd adminHomePageLeftAligned" justifyContent="SpaceBetween" alignItems="Center">
+                    <!-- Left: Welcome Text -->
+                    <VBox>
+                        <Text id="welcomeHeader" text="{= ${i18n>hello_user} + ' ' + ${Employee>/firstName} + ',' }" class="welcomeHeader"/>
+                        <Text id="welcomeSubHeader" text="{i18n>welcome_message}" class="welcomeSubHeader"/>
+                    </VBox>
+                </HBox>
+                <!-- Cards Grid -->
+                <f:GridList id="cardGridList" class=" " width="1165px" items="{cards>/}">
+                    <f:items >
+                        <CustomListItem class="sapUiMediumMarginEnd">
+                            <core:Fragment fragmentName="clearanceui.clearanceui.view.fragments.card" type="XML" />
+                        </CustomListItem>
+                    </f:items>
+                </f:GridList>
+                <!-- Analytics Charts Section in HBox class="sapUiLargeMarginBegin" width="100%" wrap="Wrap" alignItems="Start" renderType="Bare"  -->
+                <HBox width="auto" class="sapUiSmallMarginTopBottom" alignItems="Start" justifyContent="Start">
+                    <!-- Bar Chart Card for Departments -->
+                    <f:Card class="sapUiMediumMarginEnd cardOuterBorder" width="552px">
+                        <f:content>
+                            <VBox>
+                                <HBox alignItems="Center" justifyContent="SpaceBetween" width="100%" class="sapUiTinyMarginBegin cardHeaderBox">
+                                    <!-- Title on the left -->
+                                    <Title text="{i18n>avg_response_time}" wrapping="true" level="H6" class="customCardTitle" />
+
+                                    <!-- Dropdown on the right -->
+                                    <MultiComboBox id="departmentFilter1" width="142px" items="{path: 'departmentsModel>/'}" placeholder="{i18n>departments}" class="customDropdown" selectionChange=".onDepartmentFilterChange">
+                                        <items>
+                                            <core:Item key="{departmentsModel>name}" text="{departmentsModel>name}" />
+                                        </items>
+                                    </MultiComboBox>
+                                </HBox>
+                                <core:HTML id="myChart"  content="&lt;div style=&quot;margin-left:1px;&quot;&gt;&lt;canvas id=&quot;myChart&quot; width=&quot;552&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;&lt;/div&gt;">
+                                </core:HTML>
+                            </VBox>
+
+                        </f:content>
+                    </f:Card>
+                    <!-- Activity Updates Card -->
+                    <f:Card class="cardOuterBorder " width="552px">
+                        <f:content>
+                            <!-- Main container: Vertical layout with auto height and full width -->
+                            <VBox width="100%" class="sapUiSmallMarginTop" alignItems="Start" justifyContent="Start">
+                                <VBox alignItems="Start" justifyContent="SpaceBetween" class="cardHeaderBox activityListItem" width="100%">
+
+                                    <HBox alignItems="Center" class="sapUiTinyMarginBegin" renderType="Bare">
+                                        <custom:ColorVBox justifyContent="Center" alignItems="Center" backgroundColor="black" class="iconSquareContainer">
+
+                                            <core:Icon src="sap-icon://task" size="1.25rem" color="white" />
+                                        </custom:ColorVBox>
+                                        <Title text="{i18n>activity_updates}" wrapping="true" level="H6" class="sapUiNoMargin sapUiTinyMarginBegin" />
+                                    </HBox>
+
+                                    <Text class="grayedOutText sapUiSmallMargin" text="{i18n>activity_updates_subtitle}" />
+                                    <!-- <HBox class=" activityListItem"></HBox> -->
+                                </VBox>
+                               <ScrollContainer height="260px" width="550px" vertical="true" horizontal="false">
+                                <VBox id="activitiesVBox" items="{activities>/activities}" width="100%">
+                                    <VBox width="100%" class="activityListItem">
+                                        <HBox justifyContent="SpaceBetween" class="sapUiTinyMargin" alignItems="Center">
+                                            <HBox alignItems="Center">
+                                                <Avatar backgroundColor="Transparent" class="sapUiTinyMarginEnd" initials="{activities>initials}" src="{activities>icon}" displaySize="XS" />
+   
+                                                <Text text="{activities>title}" class="sapUiTinyMarginEnd"/>
+                                                <ObjectStatus text="{activities>status}" active="true" inverted="true" visible="{= ${activities>status} ? true : false}" state="{ path: 'activities>status', formatter: '.getStatusState' }"/>
+                                            </HBox>
+
+                                            <Button text="{activities>action}" visible="{= ${activities>action} ? true : false}" press=".onActionPress" />
+                                        </HBox>
+
+                                        <Text text="{activities>subtitle}" class="grayedOutText sapUiTinyMarginBeginEnd" visible="{= ${activities>subtitle} ? true : false}" />
+                                        <Text text="{activities>time}" class="timeTextColor sapUiTinyMargin"/>
+                                    </VBox>
+                                </VBox>
+                                </ScrollContainer>
+                            </VBox>
+                        </f:content>
+                    </f:Card>
+                </HBox>
+            </VBox>
+        </HBox>
+        <!-- </content> -->
+    </Page>
+</mvc:View>

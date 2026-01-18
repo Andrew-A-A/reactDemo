@@ -1,0 +1,7 @@
+---
+applications:
+  - name: react-clearance-system
+    path: build
+    memory: 64M
+    buildpack: staticfile_buildpack
+    random-route: true

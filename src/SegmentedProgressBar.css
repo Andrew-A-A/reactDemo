@@ -1,0 +1,22 @@
+.progress-container {
+  display: flex; /* Enables flexbox layout for columns */
+  gap: 4px; /* Creates the gap between columns */
+  width: 100%;
+  height: 30px; /* Adjust height as needed */
+  align-items: flex-end; /* Aligns segments to the bottom */
+}
+
+.progress-segment {
+  flex: 1; /* Makes each segment grow equally to fill the container width */
+  background-color: #ddd; /* Color for empty segments */
+  transition: background-color 0.5s ease;
+  height: 50%; /* Default height for all bars (adjust this to match the varying heights in the image) */
+}
+
+.progress-segment.filled {
+  background-color: #6a5acd; /* Color for filled segments (matches the image purple) */
+}
+
+/* Example of adding custom heights as seen in the image's bar chart pattern */
+.progress-container .progress-segment { height: 100%; }
+/* ... continue for all segments */
