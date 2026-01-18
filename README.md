@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# UI5 to React Migration Pilot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project serves as a pilot implementation to demonstrate the feasibility and capability of migrating existing SAP UI5 applications to a modern React-based architecture.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The goal of this pilot is to showcase a "Clearance System" dashboard comparable to a typical enterprise UI5 application, but built entirely using React and the **UI5 Web Components for React** library. This approach allows us to maintain the SAP Fiori design language and user experience while leveraging the modern development workflow, ecosystem, and performance benefits of React.
 
-### `npm start`
+## Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Fiori Design Compliance**: Uses `@ui5/webcomponents-react` to ensure the look and feel remains consistent with SAP standards.
+- **Responsive Dashboard**: A fully responsive layout including a Shell Bar, Side Navigation, and Grid-based widgets.
+- **Data Visualization**: Integration of Charts using `@ui5/webcomponents-react-charts`.
+- **Custom Components**: Demonstration of custom custom React components (e.g., `SegmentedProgressBar`) working alongside standard UI5 components.
+- **Interactive UI**: Examples of state management (e.g., collapsible navigation) and interactive lists.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technology Stack
 
-### `npm test`
+- **React**: Frontend library for building the user interface.
+- **UI5 Web Components for React**: Providing the enterprise-grade UI components.
+- **Create React App**: Project scaffolding and build scripts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js installed on your machine.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository.
+2. Navigate to the project directory:
+   ```bash
+   cd reactDemo
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+### Running the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Building for Production
 
-## Learn More
+To create a production build:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Code Splitting
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The project includes a `manifest.yml` for easy deployment to Cloud Foundry environments (such as SAP BTP).
 
-### Analyzing the Bundle Size
+1. Build the project: `npm run build`
+2. Push to Cloud Foundry: `cf push`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Project Structure
 
-### Making a Progressive Web App
+- `src/Homepage.jsx`: The main dashboard view implementing the UI5 shell and layout.
+- `src/SegmentedProgressBar.jsx`: An example of a custom component.
+- `src/data.js`: Mock data used to populate the dashboard.
+- `public/`: Static assets.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is for demonstration purposes.
